@@ -712,7 +712,7 @@ setup(void)
 			y = info[i].y_org + ((info[i].height - mh) / 2);
 		} else {
 			x = info[i].x_org;
-			y = info[i].y_org + (topbar ? 0 : info[i].height - mh);
+			y = info[i].y_org + (topbar ? 0 : info[i].height - mh - border_width * 2);
 			mw = info[i].width - border_width * 2;
 		}
 
@@ -772,9 +772,10 @@ setup(void)
 static void
 usage(void)
 {
-	fputs("usage: dmenu [-bfiv] [-l lines] [-p prompt] [-fn font] [-m monitor]\n"
+	fputs("usage: dmenu [-bfivc] [-l lines] [-p prompt] [-fn font] [-m monitor]\n"
 	      "             [-h height]\n"
-	      "             [-nb color] [-nf color] [-sb color] [-sf color] [-w windowid]\n", stderr);
+	      "             [-nb color] [-nf color] [-sb color] [-sf color] [-w windowid]\n"
+        "             [-v, --version]\n", stderr);
 	exit(1);
 }
 
@@ -786,7 +787,7 @@ main(int argc, char *argv[])
 
 	for (i = 1; i < argc; i++)
 		/* these options take no arguments */
-		if (!strcmp(argv[i], "-v")) {      /* prints version information */
+		if (!strcmp(argv[i], "-v") || !strcmp(argv[i], "--version")) {      /* prints version information */
 			puts("dmenu-"VERSION);
 			exit(0);
 		} else if (!strcmp(argv[i], "-b")) /* appears at the bottom of the screen */
