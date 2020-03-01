@@ -5,6 +5,9 @@
 /* -b  option; if 0, dmenu appears at bottom     */
 static int topbar = 1;
 
+/* -F  option; if 0, dmenu doesn't use fuzzy matching     */
+static int fuzzy = 1;
+
 /* -c option; centers dmenu on screen */
 static int centered = 0;
 
