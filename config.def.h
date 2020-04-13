@@ -16,7 +16,8 @@ static int min_width = 500;
 
 /* -fn option overrides fonts[0]; default X11 font or font set */
 static const char *fonts[] = {
-	"Droid Sans Mono Regular:size=10"
+	"monospace:size=12",
+  "JoyPixels:pixelsize=14:antialias=true:autohint=true"
 };
 
 
