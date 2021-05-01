@@ -16,7 +16,7 @@ static int min_width = 500;
 
 /* -fn option overrides fonts[0]; default X11 font or font set */
 static const char *fonts[] = {
-	"monospace:size=12",
+	"Fira Code Nerd Font:size=12",
   "JoyPixels:pixelsize=14:antialias=true:autohint=true"
 };
 
@@ -27,11 +27,11 @@ static const char *prompt      = NULL;
 /* Color Scheme */
 static const char *colors[SchemeLast][2] = {
 	/*                           fg          bg       */
-	[SchemeNorm] =          { "#bbbbbb", "#222222" },
-	[SchemeSel] =           { "#eeeeee", "#005577" },
-	[SchemeSelHighlight] =  { "#ffc978", "#005577" },
-	[SchemeNormHighlight] = { "#ffc978", "#222222" },
-	[SchemeOut] =           { "#000000", "#00ffff" },
+	[SchemeNorm] =          { "#ebdbb2", "#282828" }, /* Normal item unselected */
+	[SchemeNormHighlight] = { "#e60053", "#282828" }, /* Fuzzyfound item unselected */
+	[SchemeSel] =           { "#282828", "#65b619" }, /* Normal item selected + BG = Border*/
+	[SchemeSelHighlight] =  { "#417510", "#65b619" }, /* Fuzzyfound item selected */
+	[SchemeOut] =           { "#000001", "#B0ff38" }, /* ??? */
 };
 
 /* -l option; if nonzero, dmenu uses vertical list with i
