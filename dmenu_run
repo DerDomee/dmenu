@@ -1,2 +1,2 @@
 #!/bin/sh
-dmenu_path | dmenu "$@" | ${SHELL:-"/bin/sh"} &
+dmenu_path | dmenu "$@" -hp "firefox\n,dmenu\n,chromium\n" | ${SHELL:-"/bin/sh"} &
