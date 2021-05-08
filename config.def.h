@@ -17,7 +17,7 @@ static int min_width = 500;
 /* -fn option overrides fonts[0]; default X11 font or font set */
 static const char *fonts[] = {
 	"Fira Code Nerd Font:size=12",
-  "JoyPixels:pixelsize=14:antialias=true:autohint=true"
+  "JoyPixels:pixelsize=20:antialias=true:autohint=true"
 };
 
 
