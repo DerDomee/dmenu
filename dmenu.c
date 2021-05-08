@@ -71,7 +71,6 @@ static char *(*fstrstr)(const char *, const char *) = strstr;
 
 static char**
 tokenize(char *source, const char *delim, int *llen) {
-	printf("Tokenizeing");
 	int listlength = 0;
 	char **list = malloc(1 * sizeof(char*));
 	char *token = strtok(source, delim);
@@ -1036,7 +1035,6 @@ main(int argc, char *argv[])
 		else if (!strcmp(argv[i], "-w"))   /* embedding window id */
 			embed = argv[++i];
 		else if (!strcmp(argv[i], "-hp")) {
-			printf("Should tokenize this!");
 			hpitems = tokenize(argv[++i], ",", &hplength);}
 		else
 			usage();
