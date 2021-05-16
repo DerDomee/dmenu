@@ -806,13 +806,16 @@ buttonpress(XEvent *e)
 	}
 	if (ev->button != Button1)
 		return;
+	/* disabled below, needs to be fixed */
+	/*
 	if (ev->state & ~ControlMask)
 		return;
+	*/
 	if (lines > 0) {
 		/* vertical list: (ctrl)left-click on item */
 		w = mw - x;
 		for (item = curr; item != next; item = item->right) {
-			if (item_num++ == lines){
+			if (item_num++ == lines) {
 				item_num = 1;
 				x += w / columns;
 				y = 0;
@@ -876,13 +879,19 @@ mousemove(XEvent *e)
 {
 	struct item *item;
 	XPointerMovedEvent *ev = &e->xmotion;
-	int x = 0, y = 0, h = bh, w;
+	int x = 0, y = 0, h = bh, w, item_num = 0;
 
 	if (lines > 0) {
 		w = mw -x;
 		for (item = curr; item != next; item = item->right) {
+			if (item_num++ == lines) {
+				item_num = 1;
+				x += w / columns;
+				y = 0;
+			}
 			y += h;
-			if (ev->y >= y && ev->y <= (y + h)) {
+			if (ev->y >= y && ev->y <= (y + h) &&
+			    ev->x >= x && ev->x <= (x + w / columns)) {
 				sel = item;
 				calcoffsets();
 				drawmenu();
@@ -976,6 +985,7 @@ run(void)
 			break;
 		case MotionNotify:
 			mousemove(&ev);
+			break;
 		case Expose:
 			if (ev.xexpose.count == 0)
 				drw_map(drw, win, 0, 0, mw, mh);
