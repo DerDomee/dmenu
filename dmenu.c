@@ -30,7 +30,7 @@
 #define NUMBERSBUFSIZE        (NUMBERSMAXDIGITS * 2) + 1
 /* enums */
 enum { SchemeNorm, SchemeSel, SchemeHp, SchemeNormHighlight, SchemeSelHighlight,
-       SchemeOut, SchemeLast }; /* color schemes */
+       SchemeOut, SchemePrompt, SchemeLast, }; /* color schemes */
 
 
 struct item {
@@ -246,7 +246,7 @@ drawmenu(void)
 	drw_rect(drw, 0, 0, mw, mh, 1, 1);
 
 	if (prompt && *prompt) {
-		drw_setscheme(drw, scheme[SchemeSel]);
+		drw_setscheme(drw, scheme[SchemePrompt]);
 		x = drw_text(drw, x, 0, promptw, bh, lrpad / 2, prompt, 0);
 	}
 	/* draw input field */
@@ -267,9 +267,9 @@ drawmenu(void)
 		for (item = curr; item != next; item = item->right, i++)
 			drawitem(
 				item,
-				x + ((i / lines) *  ((mw - x) / columns)),
+				0 + ((i / lines) *  ((mw - x) / columns)),
 				y + (((i % lines) + 1) * bh),
-				(mw - x) / columns
+				(mw) / columns
 			);
 	} else if (matches) {
 		/* draw horizontal list */

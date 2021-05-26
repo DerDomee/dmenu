@@ -32,7 +32,8 @@ static const char *colors[SchemeLast][2] = {
 	[SchemeSel] =           { "#282828", "#65b619" }, /* Normal item selected + BG = Border*/
 	[SchemeSelHighlight] =  { "#417510", "#65b619" }, /* Fuzzyfound item selected */
 	[SchemeOut] =           { "#000001", "#B0ff38" }, /* Multiselected item */
-	[SchemeHp] =            { "#ebdbb2", "#282828"}, /* High priority item */
+	[SchemeHp] =            { "#ebdbb2", "#282828" }, /* High priority item */
+	[SchemePrompt] =        { "#998761", "#282828" }, /* Prompt */
 };
 
 /* -l option; if nonzero, dmenu uses vertical list with i
